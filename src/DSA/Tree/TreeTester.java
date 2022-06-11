@@ -1,4 +1,4 @@
-package Tree;
+package DSA.Tree;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -7,6 +7,7 @@ public class TreeTester {
 
     static Scanner sc;
     static int index = 0;
+
     public static void main(String[] args) {
 
         ArrayList<Integer> list = new ArrayList<>();
@@ -29,7 +30,6 @@ public class TreeTester {
         s.preOrder(root);
         System.out.println();
         s.postOrder(root);
-
 
 
     }
@@ -56,39 +56,30 @@ class Solution {
 
     public void inOrder(TreeNode root) {
 
-        if(root == null) return;
+        if (root == null) return;
 
         preOrder(root.left);
-        System.out.print(root.data+" ");
+        System.out.print(root.data + " ");
         preOrder(root.right);
     }
 
     public void preOrder(TreeNode root) {
 
-        if(root == null) return;
+        if (root == null) return;
 
-        System.out.print(root.data+" ");
+        System.out.print(root.data + " ");
         preOrder(root.left);
         preOrder(root.right);
     }
+
     public void postOrder(TreeNode root) {
 
-        if(root == null) return;
+        if (root == null) return;
 
         preOrder(root.left);
         preOrder(root.right);
-        System.out.print(root.data+" ");
+        System.out.print(root.data + " ");
     }
 }
-class Node {
 
-    TreeNode left;
-    TreeNode right;
-    int data;
-
-    public Node(int data) {
-
-        this.data = data;
-    }
-}
 

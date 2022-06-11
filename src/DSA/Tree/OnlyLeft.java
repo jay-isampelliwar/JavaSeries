@@ -1,4 +1,4 @@
-package Tree;
+package DSA.Tree;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class OnlyLeft {
 
     static Scanner sc;
+
     public static void main(String[] args) {
 
         sc = new Scanner(System.in);
@@ -15,27 +16,42 @@ public class OnlyLeft {
 
         s.onlyLeft(root);
     }
-        public TreeNode createTree() {
 
-            TreeNode root = null;
+    public TreeNode createTree() {
 
-            System.out.println("Enter a data "+" ");
-            int data = sc.nextInt();
+        TreeNode root = null;
 
-            if (data == -1) return null;
+        System.out.println("Enter a data " + " ");
+        int data = sc.nextInt();
 
-            root = new TreeNode(data);
+        if (data == -1) return null;
 
-            System.out.println("Enter Left node data for "+data);
-            root.left = createTree();
+        root = new TreeNode(data);
 
-            System.out.println("Enter right node data for "+data);
-            root.right = createTree();
+        System.out.println("Enter Left node data for " + data);
+        root.left = createTree();
 
-            return root;
-        }
+        System.out.println("Enter right node data for " + data);
+        root.right = createTree();
+
+        return root;
+    }
 }
+
 class Solution3 {
+
+    public static void p(TreeNode root, ArrayList<Integer> list) {
+
+        if (root == null) return;
+
+        if (root.left != null) {
+
+            list.add(root.left.data);
+        }
+
+        p(root.left, list);
+        p(root.right, list);
+    }
 
     public void onlyLeft(TreeNode root) {
 
@@ -45,21 +61,8 @@ class Solution3 {
 
         list.add(root.data);
 
-        p(root , list);
+        p(root, list);
 
         System.out.println(list);
-    }
-
-    public static void p(TreeNode root , ArrayList<Integer> list) {
-
-        if (root == null) return;
-
-        if (root.left != null) {
-
-            list.add(root.left.data);
-        }
-
-        p(root.left , list);
-        p(root.right , list);
     }
 }

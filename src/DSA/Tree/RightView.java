@@ -1,68 +1,69 @@
-package Tree;
+package DSA.Tree;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RightView {
 
-        static Scanner sc;
-        public static void main(String[] args) {
+    static Scanner sc;
 
-            sc = new Scanner(System.in);
-            Solution2 s = new Solution2();
-            RightView tree = new RightView();
-            TreeNode root = tree.createTree();
+    public static void main(String[] args) {
 
-            s.rightView(root);
-        }
+        sc = new Scanner(System.in);
+        Solution2 s = new Solution2();
+        RightView tree = new RightView();
+        TreeNode root = tree.createTree();
 
-        public TreeNode createTree() {
+        s.rightView(root);
+    }
 
-            TreeNode root = null;
+    public TreeNode createTree() {
 
-            System.out.println("Enter a data "+" ");
-            int data = sc.nextInt();
+        TreeNode root = null;
 
-            if (data == -1) return null;
+        System.out.println("Enter a data " + " ");
+        int data = sc.nextInt();
 
-            root = new TreeNode(data);
+        if (data == -1) return null;
 
-            System.out.println("Enter Left node data for "+data);
-            root.left = createTree();
+        root = new TreeNode(data);
 
-            System.out.println("Enter right node data for "+data);
-            root.right = createTree();
+        System.out.println("Enter Left node data for " + data);
+        root.left = createTree();
 
-            return root;
-        }
+        System.out.println("Enter right node data for " + data);
+        root.right = createTree();
+
+        return root;
+    }
 }
 
 class Solution2 {
 
-        public void rightView(TreeNode root) {
+    public static void p(TreeNode root, ArrayList<Integer> list, int level) {
 
-            ArrayList<Integer> list = new ArrayList<>();
+        if (root == null) return;
 
-            if (root == null) return;
-
+        if (level == list.size()) {
             list.add(root.data);
-            p(root , list , 0);
-
-            System.out.println(list);
         }
 
-        public static void p(TreeNode root , ArrayList<Integer> list , int level) {
+        p(root.right, list, level + 1);
+        p(root.left, list, level + 1);
 
-            if (root == null) return;
+    }
 
-            if(level == list.size()) {
-                list.add(root.data);
-            }
+    public void rightView(TreeNode root) {
 
-            p(root.right , list , level + 1);
-            p(root.left , list , level + 1);
+        ArrayList<Integer> list = new ArrayList<>();
 
-        }
+        if (root == null) return;
+
+        list.add(root.data);
+        p(root, list, 0);
+
+        System.out.println(list);
+    }
 }
 
 
